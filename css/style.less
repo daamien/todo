@@ -4,10 +4,15 @@
 
 body {
   .font-family-noto();
+  a {
+    outline: none;
+    border: 0;
+  }
 }
 
 body * {
   .box-sizing(border-box);
+  -webkit-appearance: none;
 }
 
 .bold {
@@ -24,7 +29,7 @@ body * {
 
 .app__wrapper {
   width: 95%;
-  padding: 15px 20px 0px 20px;
+  padding: 5px 5px 0px 5px;
   margin: 10px auto 0 auto;
   max-width: @app__size;
 }
@@ -33,6 +38,7 @@ body * {
   font-size: 2.5em;
   color: @color__title;
   margin-bottom: 20px;
+  opacity: 0;
   .transition(font-size 1.0s);
   @media screen and (min-width: 560px) {
     font-size: 4.0em;
@@ -50,7 +56,8 @@ body * {
 
 .app__description {
   line-height: 1.4em;
-  color: @color__copy;
+  color: #969c84;
+  opacity: 0;
   border-bottom: 1px #ccc dotted;
   padding-bottom: 10px;
 }
@@ -63,56 +70,91 @@ body * {
   font-size: .8em;
   color: #777;
   float: right;
+  text-align: right;
+  line-height: 1.3em;
 }
 
 .app__button {
   padding: 5px 10px 5px 10px;
-  background-color: #666;
-  color: #eee;
+  color: #aaa;
   text-decoration: none;
   .border-radius(7px);
   .transition(background-color .3s);
   &:hover {
-    background-color: #333;
+    color: #999;
+    background-color: #eee;
   }
 }
 
 .app__section {
   margin: 80px 0 15px 0;
-  border: 1px #ddd solid;
-  .border-radius(10px);
-  padding: 10px;
   .transition(border .2s);
   opacity: 0;
-  &.focused {
-    border-color: #555;
-  }
-  &:hover {
-    .app__section-title {
-      color: #333;
-    }
+  .clearfix();
+  &.focused .app__section-title {
+    color: #333;
   }
 }
 
 .app__section-title {
   color: #777;
-  margin-bottom: 5px;
+  margin-bottom: 15px;
   .transition(color .3s);
   line-height: 1.5em;
 }
 
+.app__table {
+  width: 100%;
+  margin-bottom: 13px;
+  .app__table-checkbox {
+    width: 32px;
+  }
+  td {
+    vertical-align: top;
+  }
+}
+
 .app__input {
   font-size: 1.4em;
-  margin: 5px 0 5px 0;
-  width: 100%;
   border: 0;
   outline: 0;
   opacity: 0;
+  .transition(color .5s);
+  width: 100%;
+  padding-left: 5px;
+  margin: 0;
+  border-bottom: 1px #ddd solid;
+  color: @color__copy;
+  &:focus {
+    color: darken(@color__link, 25%);
+    border-bottom-color: #888;
+  }
+  &.checked {
+    color: #bbb;
+  }
+}
+
+.app__checkbox {
+  float: left;
+  width: 25px;
+  height: 25px;
+  border: 2px #ccc solid;
+  cursor: pointer;
+  overflow: hidden;
+  .border-radius(8px);
+  .transition(all .3s);
+  &:hover {
+    border-color: #aaa;
+  }
+  &.checked {
+    border-color: #ccc;
+    background-color: #eaeaea;
+  }
 }
 
 footer {
   margin: auto;
-  padding: 0 0 50px 25px;
+  padding: 10px 0 30px 7px;
   max-width: @app__size;
 }
 
